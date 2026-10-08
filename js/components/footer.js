@@ -25,14 +25,14 @@ const FooterComponent = {
 
             <!-- Social Links -->
             <div class="flex items-center gap-4">
-              <a href="${profile.linkedin}" target="_blank" rel="noopener" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/40 hover:text-white transition-colors">
-                <i data-lucide="linkedin" class="w-4 h-4"></i>
+              <a href="${profile.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn" data-label="LinkedIn" class="social-btn" style="--c:10,102,194">
+                ${window.brandIcon('linkedin', 'w-5 h-5')}
               </a>
-              <a href="${profile.github}" target="_blank" rel="noopener" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/40 hover:text-white transition-colors">
-                <i data-lucide="github" class="w-4 h-4"></i>
+              <a href="${profile.github}" target="_blank" rel="noopener" aria-label="GitHub" data-label="GitHub" class="social-btn" style="--c:139,92,246">
+                ${window.brandIcon('github', 'w-5 h-5')}
               </a>
-              <a href="mailto:${profile.email}" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/40 hover:text-white transition-colors">
-                <i data-lucide="mail" class="w-4 h-4"></i>
+              <a href="mailto:${profile.email}" aria-label="Email" data-label="Email" class="social-btn" style="--c:16,185,129">
+                <i data-lucide="mail" class="w-5 h-5"></i>
               </a>
             </div>
           </div>

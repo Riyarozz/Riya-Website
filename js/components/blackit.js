@@ -13,6 +13,8 @@ const BlackITComponent = {
     const blackit = window.SITE_DATA.blackit;
     const focusItems = blackit.focus || [];
 
+    // Each focus card gets its own accent (RGB triplet drives the CSS glow/gradient)
+    const focusRgb = ['59,130,246', '139,92,246', '6,182,212', '16,185,129', '245,158,11'];
     const focusColorMap = {
       blue: { bg: 'bg-blue-500/10', border: 'border-blue-500/20', text: 'text-blue-400', hoverBg: 'group-hover:bg-blue-600', tag: 'text-blue-400 bg-blue-500/10 border-blue-500/30' },
       purple: { bg: 'bg-purple-500/10', border: 'border-purple-500/20', text: 'text-purple-400', hoverBg: 'group-hover:bg-purple-600', tag: 'text-purple-400 bg-purple-500/10 border-purple-500/30' },
@@ -80,21 +82,22 @@ const BlackITComponent = {
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-              ${focusItems.map(focus => {
-      const c = focusColorMap[focus.color] || focusColorMap.blue;
+              ${focusItems.map((focus, i) => {
+      const c = { rgb: focusRgb[i % focusRgb.length] };
       return `
-                  <div class="p-6 rounded-3xl bg-slate-900/90 border border-slate-800 hover:border-blue-500/50 transition-all duration-300 group hover:-translate-y-2 flex flex-col justify-between shadow-xl">
+                  <div class="focus-card group flex flex-col justify-between" style="--c:${c.rgb}">
                     <div>
-                      <div class="w-12 h-12 rounded-2xl ${c.bg} border ${c.border} ${c.text} flex items-center justify-center mb-5 ${c.hoverBg} group-hover:text-white transition-all shadow-md">
+                      <div class="focus-icon">
                         <i data-lucide="${focus.icon}" class="w-6 h-6"></i>
                       </div>
-                      <h4 class="text-sm font-bold text-slate-100 mb-2 group-hover:text-blue-400 transition-colors">
+                      <h4 class="text-sm font-bold text-slate-100 mb-2">
                         ${focus.label}
                       </h4>
                     </div>
 
-                    <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center text-[10px] font-bold text-blue-400 uppercase tracking-wider">
+                    <div class="focus-tag">
                       <span>The BlackIt Scope</span>
+                      <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
                     </div>
                   </div>
                 `;

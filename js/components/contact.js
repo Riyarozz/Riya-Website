@@ -41,7 +41,7 @@ const ContactComponent = {
 
                 <a href="${profile.linkedin}" target="_blank" rel="noopener" class="glass-card p-5 rounded-2xl flex items-center gap-4 hover:border-blue-500/40 transition-all group">
                   <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
-                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    ${window.brandIcon('linkedin', 'w-6 h-6')}
                   </div>
                   <div>
                     <span class="text-[11px] font-bold uppercase text-slate-400">LinkedIn Profile</span>
@@ -51,7 +51,7 @@ const ContactComponent = {
 
                 <a href="${profile.github}" target="_blank" rel="noopener" class="glass-card p-5 rounded-2xl flex items-center gap-4 hover:border-blue-500/40 transition-all group">
                   <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-all">
-                    <i data-lucide="github" class="w-6 h-6"></i>
+                    ${window.brandIcon('github', 'w-6 h-6')}
                   </div>
                   <div>
                     <span class="text-[11px] font-bold uppercase text-slate-400">GitHub Code & Projects</span>

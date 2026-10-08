@@ -111,6 +111,17 @@ document.addEventListener('DOMContentLoaded', () => {
     revealObserver.observe(sec);
   });
 
+  // Minimal look: drop decorative emoji from section labels, then start motion layer
+  const emoji = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B50}‍️]+\s*/gu;
+  document.querySelectorAll('section span.rounded-full').forEach(el => {
+    el.textContent = el.textContent.replace(emoji, '').trim();
+  });
+  try {
+    if (typeof window.initEffects === 'function') window.initEffects();
+  } catch (err) {
+    console.error('Effects error:', err);
+  }
+
   // Hide page loader with smooth fade-out
   const hideLoader = () => {
     const loader = document.getElementById('page-loader');
