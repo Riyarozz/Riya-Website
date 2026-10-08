@@ -2,21 +2,16 @@
  * MAIN APPLICATION ENTRY POINT
  * Orchestrates modular components in strategic order:
  * 1. Navbar
- * 2. Hero (Name, Subtitles, Wipro Badge, 4 Action Buttons, Brand Statement Banner, Live Dashboard)
+ * 2. Hero (Name, Subtitles, Wipro Badge, 4 Action Buttons, Brand Statement Banner)
  * 3. Identity (Where Data Meets Business & Delivery — 4 Pillars)
  * 4. Experience (Wipro: Power BI & PMO 4+ Yrs, Value Pipeline, 2 Areas, Differentiator)
  * 5. Expertise (What I Do — 5 Domain Cards)
- * 6. Power BI (Live Interactive Dashboards Showcase)
- * 7. PMO Suite (Project Governance & Health Tracking)
- * 8. Career Journey (Visual Flow Timeline: 2022 -> Wipro -> PMO -> 4+ Yrs -> The BlackIt)
- * 9. The BlackIt (Founder, Vision & Mission, Our Focus: 5 areas)
- * 10. Projects (Enterprise Case Studies & Portfolio)
- * 11. Insights (Thought Leadership Articles)
- * 12. Resume (Curriculum Vitae Download & Modal)
- * 13. Skills (Interactive Competency Matrix)
- * 14. Testimonials (Client & Stakeholder Endorsements)
- * 15. Contact (Direct Form & Professional Connect)
- * 16. Footer (Brand Credentials & Links)
+ * 6. Career Journey (Visual Flow Timeline: 2022 -> Wipro -> PMO -> 4+ Yrs -> The BlackIt)
+ * 7. The BlackIt (Founder, Vision & Mission, Our Focus)
+ * 8. Projects (Enterprise Case Studies & Portfolio)
+ * 9. Skills (Interactive Competency Matrix)
+ * 10. Contact (Direct Form & Professional Connect)
+ * 11. Footer (Brand Credentials & Links)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,15 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <div id="identity-root"></div>
       <div id="experience-root"></div>
       <div id="expertise-root"></div>
-      <div id="powerbi-root"></div>
-      <div id="pmo-root"></div>
       <div id="journey-root"></div>
       <div id="blackit-root"></div>
       <div id="projects-root"></div>
-      <div id="insights-root"></div>
-      <div id="resume-root"></div>
       <div id="skills-root"></div>
-      <div id="testimonials-root"></div>
       <div id="contact-root"></div>
     </main>
     <div id="footer-root"></div>
@@ -73,15 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
   safeRender('identity-root', window.IdentityComponent || window.StatsComponent);
   safeRender('experience-root', window.ExperienceComponent || window.AboutComponent);
   safeRender('expertise-root', window.ExpertiseComponent);
-  safeRender('powerbi-root', window.PowerBIComponent);
-  safeRender('pmo-root', window.PMOComponent);
   safeRender('journey-root', window.JourneyComponent || window.TimelineComponent);
   safeRender('blackit-root', window.BlackITComponent);
   safeRender('projects-root', window.ProjectsComponent);
-  safeRender('insights-root', window.InsightsComponent);
-  safeRender('resume-root', window.ResumeComponent);
   safeRender('skills-root', window.SkillsComponent);
-  safeRender('testimonials-root', window.TestimonialsComponent);
   safeRender('contact-root', window.ContactComponent);
   safeRender('footer-root', window.FooterComponent);
 
@@ -100,15 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
   safeInit(window.IdentityComponent || window.StatsComponent);
   safeInit(window.AboutComponent || window.ExperienceComponent);
   safeInit(window.ExpertiseComponent);
-  safeInit(window.PowerBIComponent);
-  safeInit(window.PMOComponent);
   safeInit(window.JourneyComponent || window.TimelineComponent);
   safeInit(window.BlackITComponent);
   safeInit(window.ProjectsComponent);
-  safeInit(window.InsightsComponent);
-  safeInit(window.ResumeComponent);
   safeInit(window.SkillsComponent);
-  safeInit(window.TestimonialsComponent);
   safeInit(window.ContactComponent);
   safeInit(window.FooterComponent);
 
@@ -149,12 +129,3 @@ window.addEventListener('load', () => {
     setTimeout(() => loader.classList.add('hidden'), 200);
   }
 });
-
-// Absolute timeout safety fallback (1.2s max)
-setTimeout(() => {
-  const loader = document.getElementById('page-loader');
-  if (loader && !loader.classList.contains('hidden')) {
-    loader.classList.add('hidden');
-  }
-}, 1200);
-

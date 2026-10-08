@@ -18,9 +18,9 @@ const SITE_DATA = {
     brandStatement: "\"I don't just build dashboards. I understand the business problems behind the data.\"",
     brandStatementSub: "With experience spanning Power BI, business intelligence and PMO, I bridge the gap between data, technology, projects and business decisions.",
     location: "India",
-    email: "contact@riyarose057@gmail.com",         // ← Replace with your real email
-    linkedin: "https://linkedin.com/in/riyarosesaji",  // ← Replace with real LinkedIn
-    github: "https://github.com/riyarosesaji",          // ← Replace with real GitHub
+    email: "riyarose057@gmail.com",         // ← Replace with your real email
+    linkedin: "https://www.linkedin.com/in/riya-rose-saji-094294224?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    github: "https://github.com/Riyarozz",          // ← Replace with real GitHub
     blackitUrl: "#blackit",
     resumeUrl: "assets/resume.pdf",
     avatarUrl: "assets/about_me_photo_1773321212638.png",
@@ -32,12 +32,10 @@ const SITE_DATA = {
     { href: "#identity", label: "Identity" },
     { href: "#experience", label: "Experience" },
     { href: "#expertise", label: "Expertise" },
-    { href: "#powerbi", label: "Power BI" },
-    { href: "#pmo", label: "PMO" },
     { href: "#journey", label: "Journey" },
     { href: "#blackit", label: "The BlackIt" },
     { href: "#projects", label: "Projects" },
-    { href: "#insights", label: "Insights" },
+    { href: "#skills", label: "Skills" },
     { href: "#contact", label: "Contact" }
   ],
 
@@ -837,19 +835,6 @@ Essential Steps in Requirement Engineering
     }
   ],
 
-  // 14. NAVIGATION LINKS
-  navLinks: [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#experience" },
-    { label: "Expertise", href: "#expertise" },
-    { label: "Power BI", href: "#powerbi" },
-    { label: "PMO Suite", href: "#pmo" },
-    { label: "Projects", href: "#projects" },
-    { label: "BlackIt", href: "#blackit" },
-    { label: "Journey", href: "#journey" },
-    { label: "Insights", href: "#insights" },
-    { label: "Contact", href: "#contact" }
-  ],
 
   // ============================================================
   // 15. PROFESSIONAL IDENTITY SECTION ("Where Data Meets Business & Delivery")

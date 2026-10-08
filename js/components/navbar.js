@@ -27,7 +27,7 @@ const NavbarComponent = {
           </a>
 
           <!-- Desktop Navigation -->
-          <nav class="hidden lg:flex items-center gap-6">
+          <nav class="hidden lg:flex items-center gap-5">
             ${links.map(link => `
               <a href="${link.href}" class="nav-link text-sm font-medium text-slate-300 hover:text-blue-400 transition-colors py-1">
                 ${link.label}
@@ -38,9 +38,8 @@ const NavbarComponent = {
           <!-- Right Actions (Theme Toggle & CTA) -->
           <div class="hidden sm:flex items-center gap-4">
             <!-- Theme Toggle Button -->
-            <button id="theme-toggle-btn" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 hover:text-white transition-all border border-white/10" title="Toggle Light/Dark Theme">
-              <i data-lucide="sun" class="w-4 h-4 hidden dark-icon"></i>
-              <i data-lucide="moon" class="w-4 h-4 light-icon"></i>
+            <button id="theme-toggle-btn" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 hover:text-white transition-all border border-white/10 flex items-center justify-center theme-icon-container" title="Toggle Light/Dark Theme">
+              <i data-lucide="sun" class="w-4 h-4"></i>
             </button>
 
             <!-- CTA Button -->
@@ -52,8 +51,8 @@ const NavbarComponent = {
 
           <!-- Mobile Hamburger Toggle -->
           <div class="flex sm:hidden items-center gap-3">
-            <button id="mobile-theme-toggle" class="p-2 rounded-lg bg-slate-800 text-slate-300">
-              <i data-lucide="moon" class="w-4 h-4"></i>
+            <button id="mobile-theme-toggle" class="p-2 rounded-lg bg-slate-800 text-slate-300 theme-icon-container">
+              <i data-lucide="sun" class="w-4 h-4"></i>
             </button>
             <button id="mobile-menu-btn" class="p-2 rounded-xl bg-slate-800 text-slate-200 hover:text-white border border-white/10 focus:outline-none">
               <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
@@ -87,13 +86,16 @@ const NavbarComponent = {
     const mobileThemeBtn = document.getElementById('mobile-theme-toggle');
 
     // Scroll shrink effect
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar?.classList.add('py-2', 'bg-slate-950/90', 'shadow-2xl');
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50;
+      if (isScrolled) {
+        navbar?.classList.add('scrolled', 'shadow-xl');
         navbar?.classList.remove('py-4');
+        navbar?.classList.add('py-2.5');
       } else {
+        navbar?.classList.remove('scrolled', 'shadow-xl');
+        navbar?.classList.remove('py-2.5');
         navbar?.classList.add('py-4');
-        navbar?.classList.remove('py-2', 'bg-slate-950/90', 'shadow-2xl');
       }
 
       // Scroll Spy for nav links
@@ -114,7 +116,10 @@ const NavbarComponent = {
           });
         }
       });
-    });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
 
     // Mobile menu toggle
     mobileBtn?.addEventListener('click', () => {
@@ -129,22 +134,37 @@ const NavbarComponent = {
     });
 
     // Theme Switch logic
-    const toggleTheme = () => {
-      document.body.classList.toggle('light-mode');
-      const isLight = document.body.classList.contains('light-mode');
+    const applyTheme = (isLight) => {
+      document.body.classList.toggle('light-mode', isLight);
+      document.documentElement.classList.toggle('dark', !isLight);
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      // Re-render chart colors if charts exist
-      if (window.renderDashboardCharts) {
-        window.renderDashboardCharts();
+
+      // Update toggle icons
+      const containers = document.querySelectorAll('.theme-icon-container');
+      containers.forEach(container => {
+        container.innerHTML = isLight
+          ? `<i data-lucide="moon" class="w-4 h-4"></i>`
+          : `<i data-lucide="sun" class="w-4 h-4"></i>`;
+      });
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
       }
+    };
+
+    const toggleTheme = () => {
+      const isCurrentlyLight = document.body.classList.contains('light-mode');
+      applyTheme(!isCurrentlyLight);
     };
 
     themeBtn?.addEventListener('click', toggleTheme);
     mobileThemeBtn?.addEventListener('click', toggleTheme);
 
     // Initial theme check
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.add('light-mode');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      applyTheme(true);
+    } else {
+      applyTheme(false);
     }
   }
 };

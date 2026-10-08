@@ -45,15 +45,9 @@ const FooterComponent = {
             </div>
 
             <div class="flex flex-wrap items-center justify-center gap-6 font-medium text-slate-400">
-              <a href="#home" class="hover:text-blue-400 transition-colors">Home</a>
-              <a href="#identity" class="hover:text-blue-400 transition-colors">Identity</a>
-              <a href="#experience" class="hover:text-blue-400 transition-colors">Experience</a>
-              <a href="#powerbi" class="hover:text-blue-400 transition-colors">Power BI</a>
-              <a href="#pmo" class="hover:text-blue-400 transition-colors">PMO Suite</a>
-              <a href="#journey" class="hover:text-blue-400 transition-colors">Career Journey</a>
-              <a href="#blackit" class="hover:text-blue-400 transition-colors">The BlackIt</a>
-              <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
-              <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+              ${(window.SITE_DATA.navLinks || []).map(link => `
+                <a href="${link.href}" class="hover:text-blue-400 transition-colors">${link.label}</a>
+              `).join('')}
             </div>
           </div>
 

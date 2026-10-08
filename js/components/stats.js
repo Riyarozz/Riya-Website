@@ -55,43 +55,35 @@ const IdentityComponent = {
               };
 
               return `
-                <div class="glass-card p-6 sm:p-7 rounded-3xl flex flex-col justify-between group transition-all duration-300 ${borderColors[pillar.color]} border border-slate-800 hover:-translate-y-2 shadow-xl">
-                  <div>
-                    <!-- Top Pill & Pillar Number -->
-                    <div class="flex items-center justify-between mb-5">
-                      <span class="px-3 py-1 rounded-full text-xs font-mono font-black uppercase tracking-wider border ${tagColors[pillar.color]}">
-                        ${pillar.number}
-                      </span>
-                      <div class="w-11 h-11 rounded-2xl flex items-center justify-center border ${iconColors[pillar.color]} group-hover:scale-110 transition-transform">
-                        <i data-lucide="${pillar.icon}" class="w-5 h-5"></i>
-                      </div>
-                    </div>
-
-                    <!-- Title -->
-                    <h3 class="text-xl font-black text-slate-100 group-hover:text-blue-400 transition-colors">
-                      ${pillar.title}
-                    </h3>
-
-                    <!-- Key Skills Text -->
-                    <p class="text-xs font-semibold text-slate-400 mt-2 mb-4 leading-relaxed font-mono">
-                      ${pillar.skillsText}
-                    </p>
-
-                    <!-- Bullet Details -->
-                    <div class="space-y-2 pt-3 border-t border-slate-800/80">
-                      ${pillar.details.map(det => `
-                        <div class="flex items-start gap-2 text-xs text-slate-300 leading-snug">
-                          <i data-lucide="check" class="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5"></i>
-                          <span>${det}</span>
-                        </div>
-                      `).join('')}
+                <div class="glass-card p-6 sm:p-7 rounded-3xl flex flex-col group transition-all duration-300 ${borderColors[pillar.color]} border border-slate-800 hover:-translate-y-2 shadow-xl">
+                  <!-- Top Pill & Pillar Number -->
+                  <div class="flex items-center justify-between mb-5">
+                    <span class="px-3 py-1 rounded-full text-xs font-mono font-black uppercase tracking-wider border ${tagColors[pillar.color]}">
+                      ${pillar.number}
+                    </span>
+                    <div class="w-11 h-11 rounded-2xl flex items-center justify-center border ${iconColors[pillar.color]} group-hover:scale-110 transition-transform">
+                      <i data-lucide="${pillar.icon}" class="w-5 h-5"></i>
                     </div>
                   </div>
 
-                  <!-- Bottom Accent Bar -->
-                  <div class="mt-6 pt-3 border-t border-slate-800/60 flex items-center justify-between text-[11px] font-bold text-slate-400">
-                    <span class="uppercase tracking-wider">Core Competency</span>
-                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-blue-400 group-hover:translate-x-1 transition-transform"></i>
+                  <!-- Title -->
+                  <h3 class="text-xl font-black text-slate-100 group-hover:text-blue-400 transition-colors">
+                    ${pillar.title}
+                  </h3>
+
+                  <!-- Key Skills Text -->
+                  <p class="text-xs font-semibold text-slate-400 mt-2 mb-4 leading-relaxed font-mono">
+                    ${pillar.skillsText}
+                  </p>
+
+                  <!-- Bullet Details -->
+                  <div class="space-y-2.5 pt-4 border-t border-slate-800/80 mt-auto">
+                    ${pillar.details.map(det => `
+                      <div class="flex items-start gap-2 text-xs text-slate-300 leading-snug">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5"></i>
+                        <span>${det}</span>
+                      </div>
+                    `).join('')}
                   </div>
                 </div>
               `;
